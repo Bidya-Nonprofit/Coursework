@@ -37,6 +37,8 @@ def count_primes(n):
     >>> print(utils.calculate_sha256(str(count_primes(104743))))
     e443169117a184f91186b401133b20be670c7c0896f9886075e5d9b81e9d076b
 
+    For extra credit... solve this in O(n * log log n) email Rohan if interested.
+
     :param n:
     :return:
 
