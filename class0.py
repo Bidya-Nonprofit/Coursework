@@ -1,5 +1,27 @@
 import utils
 
+def square(n):
+    """
+    Print a square to the console using asterisks. Which is nxn...
+    free bee.
+    >>> square(5)
+    *****
+    *****
+    *****
+    *****
+    *****
+
+    :param n:
+    :return:
+    """
+
+    # for each line
+    for i in range(n):
+        # print the line
+        for j in range(n):
+            print("*", end = "")
+        print("\n", end ="")
+
 def pyramid(n):
     """
     Print a pyramid of asterisks with n levels.
