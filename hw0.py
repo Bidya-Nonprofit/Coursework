@@ -13,10 +13,38 @@ def is_even(n):
     False
 
     """
+    return (n % 2) == 0
+
+def count_divisors(n):
+    """Count the divisors of a positive natural number n.
+
+    Recall, that a natural number N is a counting number 0,1,2... and a divisor is a natural number d such that
+    there exists a natural k such that k * d = n
+
+    >>> count_divisors(4)
+    3
+    >>> count_divisors(7)
+    2
+    >>> count_divisors(12)
+    6
+
+    :param n:
+    :return: The number of such divisors
+    """
+    count = 0
+
+    for d in range(1, int(n ** (.5))+ 1):
+        if n % d == 0:
+            # This is a divisor
+            count = count + 1
+            if d * d != n:
+                count = count + 1
+
+    return count
 
 
 def is_prime(n):
-    """ A prime number has exactly two factors, itself and n.
+    """ A prime number has exactly 2 divisors, itself and n.
     >>> is_prime(2)
     True
     >>> is_prime(3)
@@ -26,6 +54,10 @@ def is_prime(n):
     >>> is_prime(9)
     False
     """
+
+    return count_divisors(n) == 2
+
+
 
 
 def count_primes(n):
@@ -42,8 +74,8 @@ def count_primes(n):
     :param n:
     :return:
 
-
     """
+    ...
 
 def multiples_sum(n):
     """

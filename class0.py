@@ -1,8 +1,8 @@
 import utils
 
 def square(n):
-    """
-    Print a square to the console using asterisks. Which is nxn...
+    """Print a square to the console using asterisks. Which is nxn...
+
     free bee.
     >>> square(5)
     *****
@@ -23,8 +23,8 @@ def square(n):
         print("\n", end ="")
 
 def pyramid(n):
-    """
-    Print a pyramid of asterisks with n levels.
+    """ Print a pyramid of asterisks with n levels.
+
     The first line has Each line should have one more asterisk then the previous line.
     >>> pyramid(1)
     *
@@ -37,7 +37,11 @@ def pyramid(n):
     :param n: Number of lines in the pyramid
     :return: None
     """
-    ...
+    for i in range(n):
+        for j in range(i + 1):
+            print("*", end = "")
+        print("")
+
 
 
 def fizz_buzz(n):
@@ -69,6 +73,14 @@ def fizz_buzz(n):
     :return: None
     """
     for i in range(1, n + 1): # Range operations start at the start bound and go up to the end exclusive
-        ... # implement this function!
+        if i % 15 == 0:
+            print("FizzBuzz")
+        elif i % 5 == 0:
+            print("Buzz")
+        elif i % 3 == 0:
+            print("Fizz")
+        else:
+            print(i)
+
 
 
