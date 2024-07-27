@@ -75,11 +75,14 @@ def count_primes(n):
     :return:
 
     """
-    ...
+    count = 0
+    for i in range(1, n + 1):
+        count += int(is_prime(i))
 
+    return count
 def multiples_sum(n):
     """
-    Find the sum of the numbers 1 through n which are multiples of 3 or 5
+    Find the sum of the numbers 1 through n exclusive which are multiples of 3 or 5
     >>> multiples_sum(10)
     23
     >>> import utils
@@ -90,5 +93,7 @@ def multiples_sum(n):
     """
     s = 0
     # Load up the s variable and prepare it to be returned
+
+    return sum(i for i in range(n) if (i % 3) == 0 or (i% 5) == 0)
 
     return s
