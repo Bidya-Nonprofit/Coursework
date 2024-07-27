@@ -19,7 +19,7 @@ def sum_f(f: UnaryInt, count: int) -> int:
     :param fib:
     :param count:
     :return:
-    >>> sum_fibonacci_numbers(fib, 8) = sum([0, 1, 1, 2, 3, 5, 8, 13])
+    >>> assert sum_fibonacci_numbers(fib, 8) == sum([0, 1, 1, 2, 3, 5, 8, 13])
     """
 
     running_sum = 0
