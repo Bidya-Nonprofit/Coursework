@@ -95,5 +95,3 @@ def multiples_sum(n):
     # Load up the s variable and prepare it to be returned
 
     return sum(i for i in range(n) if (i % 3) == 0 or (i% 5) == 0)
-
-    return s
