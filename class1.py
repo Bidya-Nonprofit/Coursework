@@ -1,5 +1,20 @@
 """
 Classwork 1 on functions and function composition.
+
+Takeaways from class 1.
+
+Expressions represent the composition of functions and evaluate to a single value.
+- Primitive expressions (think, ints, bools etc...)
+- Compound expressions
+How are functions evaluated in infix notation.
+
+First evaluate function, then evaluate the arguments. Then apply the function to the arguments.
+
+Integers are Immutable...
+
+A higher order function is a function that takes one or more functions as
+arguments or returns a function as a result.
+
 """
 
 from typing import Callable, Tuple
@@ -7,13 +22,15 @@ from typing import Callable, Tuple
 # Closed function from integers to integers.
 UnaryInt = Callable[[int], int]
 
+
 def fib(n):
-    if n <= ...:
+    if n <= 1:
         return n
     else:
-        return fib(...) + fib(...)
+        return fib(n - 1) + fib(n - 2)
 
-def sum_f(f: UnaryInt, count: int) -> int:
+
+def sum_f(f, count) -> int:
     """
     Return f(0) + f(1) + ... f(count - 1)
     :param fib:
@@ -24,10 +41,13 @@ def sum_f(f: UnaryInt, count: int) -> int:
 
     running_sum = 0
 
-    for i in range(...):
-        running_sum += f(...)
+    for i in range(count):  # inside of this loop. `i` will range from 0... n -1
+        running_sum += f(i)
 
-    return ...
+    return running_sum
+
+
+assert sum_f(fib, 8) == sum([0, 1, 1, 2, 3, 5, 8, 13])
 
 
 def get_linear_function(m: int, b: int = 0) -> UnaryInt:
@@ -43,7 +63,7 @@ def get_linear_function(m: int, b: int = 0) -> UnaryInt:
     """
 
     def inner(x):
-        return ... + ...
+        return m * x + b
 
     return inner
 
@@ -70,15 +90,15 @@ def iterate(f: UnaryInt, count: int) -> UnaryInt:
     :return:
 
     >>> double = lambda x : 2 * x
-    >>> [iterate(double, i)(x) for x in range(7)]
+    >>> [iterate(double, i)(1) for i in range(7)]
     [1, 2, 4, 8, 16, 32, 64]
     """
 
     if count == 0:
-        return lambda x : ...
+        return lambda x: x
     else:
         g = iterate(f, count - 1)
-        return compose(..., ...)
+        return compose(f, g)
 
 
 def minimize(f: UnaryInt, lb: int, ub: int) -> Tuple[int, int]:
@@ -93,11 +113,11 @@ def minimize(f: UnaryInt, lb: int, ub: int) -> Tuple[int, int]:
     >>> minimize(lambda x: (x - 20) ** 2 + 100, -100, 100) # (x - 20)^2 + 100
     (20, 100)
     """
-    best, fbest = lb - 1, float("-inf")
+    old_best_x, old_best_f_x = lb - 1, float("inf")
 
-    for x in range(lb, ub):
-        f_x = f(...)
-        if ... < ...:
-            best, fbest = ..., ...
+    for new_x in range(lb, ub):
+        new_best = f(new_x)
+        if new_best < old_best_f_x:  # if we have a new best that is less than the old best
+            old_best_x, old_best_f_x = new_x, new_best  # update our old best with this new value of x and f(x)
 
-    return best, fbest
+    return old_best_x, old_best_f_x
